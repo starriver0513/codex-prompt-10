@@ -2037,7 +2037,7 @@ A. 接続確認 → B. スキル作成 → C. 今すぐ1回テスト実行 → D
   if ('IntersectionObserver' in window && !reduce){
     var io = new IntersectionObserver(function(es){
       es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, {rootMargin:'0px 0px -12% 0px', threshold:0.08});
+    }, {rootMargin:'0px 0px -12% 0px', threshold:0});  /* threshold>0だと、ビューポートの十数倍の高さの要素（長文プロンプトのカード等）で一生発火せず透明のまま章が消える（2026-08-20 No.12で実発生: 19,267pxのカードは最大でも3.7%しか見えない） */
     rv.forEach(function(el){ io.observe(el); });
   } else {
     rv.forEach(function(el){ el.classList.add('in'); });
